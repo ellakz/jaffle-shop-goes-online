@@ -60,10 +60,21 @@ models:
     tests:
       - elementary.freshness_anomalies
       - elementary.dimension_anomalies:
-          dimensions: 
+          dimensions:
             - customer_id
           config:
             tags: ["stability"]
+      - elementary.volume_anomalies:
+          time_bucket:
+            period: day
+            count: 1
+          sensitivity: 3
+          days_back: 14
+          timestamp_column: order_date
+          config:
+            severity: error
+          meta:
+            description: Checking for anomalies in the size and growth of a table by comparing the row count of each 1 days period to the last 14 days
     columns:
       - name: order_id
         description: This is a unique identifier for an order
@@ -87,8 +98,7 @@ models:
               config:
                 tags: ["customer_success"]
                 severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
+              values: ["placed", "shipped", "completed", "return_pending", "returned"]
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["placed", "shipped", "completed", "return_pending", "returned"]
               quote_values: true

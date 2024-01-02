@@ -1,0 +1,91 @@
+version: 2
+models:
+  - name: sessions
+    columns:
+      - name: session_id
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The column should contain only unique values
+      - name: customer_id
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The column should contain only unique values
+  - name: order_items
+    columns:
+      - name: order_id
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The column should contain only unique values
+      - name: customer_id
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The column should contain only unique values
+  - name: marketing_ads
+    columns:
+      - name: ad_id
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The column should contain only unique values
+  - name: attribution_touches
+    columns:
+      - name: customer_id
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The column should contain only unique values
+      - name: session_id
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The column should contain only unique values
+  - name: customer_conversions
+    columns:
+      - name: customer_id
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The column should contain only unique values
+  - name: agg_sessions
+    columns:
+      - name: session_id
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The column should contain only unique values
+      - name: customer_id
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The column should contain only unique values
+      - name: ad_id
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The column should contain only unique values

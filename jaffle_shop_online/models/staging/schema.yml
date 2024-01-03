@@ -36,8 +36,7 @@ models:
           - accepted_values:
               config:
                 severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
+              values: ["placed", "shipped", "completed", "return_pending", "returned"]
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["placed", "shipped", "completed", "return_pending", "returned"]
               quote_values: true
@@ -82,3 +81,16 @@ models:
                 severity: warn
               column_anomalies:
                 - missing_count
+    tests:
+      - elementary.volume_anomalies:
+          time_bucket:
+            period: day
+            count: 1
+          sensitivity: 3
+          days_back: 14
+          backfill_days: 2
+          timestamp_column: ccc
+          config:
+            severity: error
+          meta:
+            description: Checking for anomalies in the size and growth of a table by comparing the row count of each 1 days period to the last 14 days

@@ -1,0 +1,181 @@
+version: 2
+exposures:
+  - name: e2e_dashboard_do_not_modify_7
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/7
+    meta:
+      platform: Looker
+      path: Users/Or Avidov/E2E Do Not Modify
+      sub_type: dashboard
+    owner:
+      name: Or Avidov
+      email: or@elementary-data.com
+    label: E2E Dashboard Do Not Modify_7
+  - name: e2e_do_not_modify__e2e_dashboard_from_ml_e2e_do_not_modify__e2e_looker_ml_dashboard
+    description: ZOMG Dashboard and such
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/e2e_do_not_modify::e2e_looker_ml_dashboard
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+      sub_type: dashboard
+    label: E2E Dashboard From ML_e2e_do_not_modify::e2e_looker_ml_dashboard
+    owner:
+      name: Jaffle Shop Online - Demo
+  - name: erik_be_testin_6
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/6
+    meta:
+      platform: Looker
+      path: Users/Or Avidov
+      sub_type: dashboard
+    owner:
+      name: Or Avidov
+      email: or@elementary-data.com
+    label: Erik Be Testin_6
+  - name: eriksnowflaketest__a_dashboard_from_ml_eriksnowflaketest__erik_be_ml_dashboarding
+    description: ZOMG ML Dashboard
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/eriksnowflaketest::erik_be_ml_dashboarding
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+      sub_type: dashboard
+    label: A Dashboard From ML_eriksnowflaketest::erik_be_ml_dashboarding
+    owner:
+      name: Jaffle Shop Online - Demo
+  - name: events_per_city_4
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/4
+    meta:
+      platform: Looker
+      path: Users/Or Avidov
+      sub_type: dashboard
+    owner:
+      name: Or Avidov
+      email: or@elementary-data.com
+    label: Events per city_4
+  - name: folder_dashboard_5
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/5
+    meta:
+      platform: Looker
+      path: Users/Or Avidov/Nested/Double Nested
+      sub_type: dashboard
+    owner:
+      name: Or Avidov
+      email: or@elementary-data.com
+    label: Folder Dashboard_5
+  - name: new_dashboard_with_look_3
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/3
+    meta:
+      platform: Looker
+      path: Users/Or Avidov
+      sub_type: dashboard
+    owner:
+      name: Or Avidov
+      email: or@elementary-data.com
+    label: New dashboard with look_3
+  - name: redshift__joeydashboard_redshift__joeysdashboard
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/redshift::joeysdashboard
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+      sub_type: dashboard
+    label: JoeyDashboard_redshift::joeysdashboard
+    owner:
+      name: Jaffle Shop Online - Demo
+  - name: sales_by_month_1
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/1
+    meta:
+      platform: Looker
+      path: Users/Or Avidov
+      sub_type: dashboard
+    owner:
+      name: Or Avidov
+      email: or@elementary-data.com
+    label: Sales by month_1
+  - name: testdashboard_2
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/2
+    meta:
+      platform: Looker
+      path: Users/Or Avidov
+      sub_type: dashboard
+    owner:
+      name: Or Avidov
+      email: or@elementary-data.com
+    label: TestDashboard_2
+  - name: thelook__brand_analytics_web__transactional_thelook__brand_analytics
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/thelook::brand_analytics
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+      sub_type: dashboard
+    label: Brand Analytics, Web & Transactional_thelook::brand_analytics
+    owner:
+      name: Jaffle Shop Online - Demo
+  - name: thelook__business_pulse_thelook__business_pulse
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/thelook::business_pulse
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+      sub_type: dashboard
+    label: Business Pulse_thelook::business_pulse
+    owner:
+      name: Jaffle Shop Online - Demo
+  - name: thelook__cohort_data_tool_thelook__cohort_data_tool
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/thelook::cohort_data_tool
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+      sub_type: dashboard
+    label: Cohort Data Tool_thelook::cohort_data_tool
+    owner:
+      name: Jaffle Shop Online - Demo
+  - name: thelook__customer_lookup_thelook__customer_lookup
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/thelook::customer_lookup
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+      sub_type: dashboard
+    label: Customer Lookup_thelook::customer_lookup
+    owner:
+      name: Jaffle Shop Online - Demo
+  - name: thelook__shipping_logistics__operations_thelook__shipping_logistics__operations
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/thelook::shipping_logistics__operations
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+      sub_type: dashboard
+    label: Shipping Logistics & Operations_thelook::shipping_logistics__operations
+    owner:
+      name: Jaffle Shop Online - Demo
+  - name: thelook__web_analytics_data_tool_thelook__web_analytics_data_tool
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/thelook::web_analytics_data_tool
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+      sub_type: dashboard
+    label: Web Analytics Data Tool_thelook::web_analytics_data_tool
+    owner:
+      name: Jaffle Shop Online - Demo
+  - name: thelook__web_analytics_thelook__web_analytics
+    type: dashboard
+    url: https://elementarydata.cloud.looker.com/dashboards/thelook::web_analytics
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+      sub_type: dashboard
+    label: Web Analytics_thelook::web_analytics
+    owner:
+      name: Jaffle Shop Online - Demo

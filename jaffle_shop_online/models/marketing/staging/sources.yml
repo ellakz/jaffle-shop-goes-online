@@ -5,11 +5,66 @@ sources:
     schema: jaffle_shop
     tables:
       - name: stg_google_ads
+        tests:
+          - elementary.schema_changes:
+              config:
+                tags:
+                  - staging
+                  - stability
+                severity: error
+              meta:
+                owner:
+                  - daniel+999@elementary-data.com
+                description: Checks for schema changes against an existing baseline
       - name: stg_facebook_ads
+        tests:
+          - elementary.schema_changes:
+              config:
+                tags:
+                  - staging
+                  - stability
+                severity: error
+              meta:
+                owner:
+                  - daniel+999@elementary-data.com
+                description: Checks for schema changes against an existing baseline
       - name: stg_instagram_ads
 
+        tests:
+          - elementary.schema_changes:
+              config:
+                tags:
+                  - staging
+                  - stability
+                severity: error
+              meta:
+                owner:
+                  - daniel+999@elementary-data.com
+                description: Checks for schema changes against an existing baseline
   - name: sessions
     schema: jaffle_shop
     tables:
       - name: stg_website_sessions
+        tests:
+          - elementary.schema_changes:
+              config:
+                tags:
+                  - staging
+                  - stability
+                severity: error
+              meta:
+                owner:
+                  - daniel+999@elementary-data.com
+                description: Checks for schema changes against an existing baseline
       - name: stg_app_sessions
+        tests:
+          - elementary.schema_changes:
+              config:
+                tags:
+                  - staging
+                  - stability
+                severity: error
+              meta:
+                owner:
+                  - daniel+999@elementary-data.com
+                description: Checks for schema changes against an existing baseline

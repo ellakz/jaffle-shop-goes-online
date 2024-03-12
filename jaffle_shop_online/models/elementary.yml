@@ -1,0 +1,12 @@
+version: 2
+models:
+  - name: order_items
+    tests:
+      - elementary.schema_changes:
+          config:
+            tags:
+              - schema
+              - stability
+            severity: warn
+          meta:
+            description: Checks for schema changes against an existing baseline

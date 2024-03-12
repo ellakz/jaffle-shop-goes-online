@@ -48,6 +48,15 @@ models:
       - name: signup_date
         description: Date (UTC) of a customer's signup to the online shop.
 
+    tests:
+      - elementary.schema_changes:
+          config:
+            tags:
+              - schema
+              - stability
+            severity: warn
+          meta:
+            description: Checks for schema changes against an existing baseline
   - name: orders
     description: This table has basic information about orders, as well as some derived facts based on payments
     meta:
@@ -60,10 +69,18 @@ models:
     tests:
       - elementary.freshness_anomalies
       - elementary.dimension_anomalies:
-          dimensions: 
+          dimensions:
             - customer_id
           config:
             tags: ["stability"]
+      - elementary.schema_changes:
+          config:
+            tags:
+              - schema
+              - stability
+            severity: warn
+          meta:
+            description: Checks for schema changes against an existing baseline
     columns:
       - name: order_id
         description: This is a unique identifier for an order
@@ -87,8 +104,7 @@ models:
               config:
                 tags: ["customer_success"]
                 severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
+              values: ["placed", "shipped", "completed", "return_pending", "returned"]
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["placed", "shipped", "completed", "return_pending", "returned"]
               quote_values: true
@@ -127,6 +143,14 @@ models:
     tests:
       - elementary.volume_anomalies
       - elementary.schema_changes
+      - elementary.schema_changes:
+          config:
+            tags:
+              - schema
+              - stability
+            severity: warn
+          meta:
+            description: Checks for schema changes against an existing baseline
     columns:
       - name: order_id
         description: This is a unique identifier for an order
@@ -183,6 +207,14 @@ models:
     tests:
       - elementary.volume_anomalies
       - elementary.schema_changes_from_baseline
+      - elementary.schema_changes:
+          config:
+            tags:
+              - schema
+              - stability
+            severity: warn
+          meta:
+            description: Checks for schema changes against an existing baseline
     columns:
       - name: order_id
         description: This is a unique identifier for an order

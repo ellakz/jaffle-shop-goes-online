@@ -30,6 +30,15 @@ models:
         data_type: number
         description: "The USD amount of money spent"
 
+    tests:
+      - elementary.schema_changes:
+          config:
+            tags:
+              - schema
+              - stability
+            severity: warn
+          meta:
+            description: Checks for schema changes against an existing baseline
   - name: attribution_touches
     description: "This is a table that contains all the touch points, by session, with the utm_source, utm_medium and utm_campaign"
     meta:
@@ -115,6 +124,15 @@ models:
         data_type: number
         description: ""
 
+    tests:
+      - elementary.schema_changes:
+          config:
+            tags:
+              - schema
+              - stability
+            severity: warn
+          meta:
+            description: Checks for schema changes against an existing baseline
   - name: cpa_and_roas
     description: "This table contains the cost per acquisition and return on ad spend, by source, and per month"
     meta:
@@ -152,6 +170,15 @@ models:
         data_type: number
         description: "The ROI of the ad spend, calculated as attribution_revenue / total_spend"
 
+    tests:
+      - elementary.schema_changes:
+          config:
+            tags:
+              - schema
+              - stability
+            severity: warn
+          meta:
+            description: Checks for schema changes against an existing baseline
   - name: marketing_ads
     description: "This table contains information on the ad spend, by source, medium and campaign"
     meta:
@@ -185,14 +212,23 @@ models:
         data_type: varchar
         description: "Source where the ad was displayed. For example, Google, Facebook, Twitter, Newsletter, etc."
 
+    tests:
+      - elementary.schema_changes:
+          config:
+            tags:
+              - schema
+              - stability
+            severity: warn
+          meta:
+            description: Checks for schema changes against an existing baseline
   - name: agg_sessions
     description: "This table contains aggregated information on the sessions"
     meta:
       owner: "Ella"
     config:
-        tags: ["Marketing"]
-        elementary:
-            timestamp_column: "started_at"
+      tags: ["Marketing"]
+      elementary:
+        timestamp_column: "started_at"
     columns:
       - name: session_id
         data_type: varchar
@@ -222,14 +258,23 @@ models:
         data_type: varchar
         description: "Platform where the session was made. For example, website, iOS app, Android app, etc."
 
+    tests:
+      - elementary.schema_changes:
+          config:
+            tags:
+              - schema
+              - stability
+            severity: warn
+          meta:
+            description: Checks for schema changes against an existing baseline
   - name: customer_conversions
     description: "This table contains information on the conversions of all the customers"
     meta:
       owner: "Ella"
     config:
-        tags: ["Marketing", "Finance", "PII"]
-        elementary:
-            timestamp_column: "converted_at"
+      tags: ["Marketing", "Finance", "PII"]
+      elementary:
+        timestamp_column: "converted_at"
     columns:
       - name: customer_id
         data_type: number
@@ -243,14 +288,23 @@ models:
         data_type: number
         description: "Total revenue amount (USD) of the conversion"
 
+    tests:
+      - elementary.schema_changes:
+          config:
+            tags:
+              - schema
+              - stability
+            severity: warn
+          meta:
+            description: Checks for schema changes against an existing baseline
   - name: sessions
     description: "This table contains information on the sessions of all the customers and the utm_source, utm_medium and utm_campaign of the session"
     meta:
       owner: "Ella"
     config:
-        tags: ["Marketing", "PII"]
-        elementary:
-            timestamp_column: "started_at"
+      tags: ["Marketing", "PII"]
+      elementary:
+        timestamp_column: "started_at"
     columns:
       - name: session_id
         data_type: varchar
@@ -279,3 +333,12 @@ models:
       - name: utm_campain
         data_type: varchar
         description: "The name of the advertising campaign"
+    tests:
+      - elementary.schema_changes:
+          config:
+            tags:
+              - schema
+              - stability
+            severity: warn
+          meta:
+            description: Checks for schema changes against an existing baseline

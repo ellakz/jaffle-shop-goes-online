@@ -1,0 +1,22 @@
+version: 2
+models:
+  - name: order_items
+    columns:
+      - name: order_id
+        tests:
+          - not_null:
+              config:
+                tags:
+                  - stability
+                severity: error
+              meta:
+                description: The column should not contain null values
+      - name: customer_id
+        tests:
+          - not_null:
+              config:
+                tags:
+                  - stability
+                severity: error
+              meta:
+                description: The column should not contain null values

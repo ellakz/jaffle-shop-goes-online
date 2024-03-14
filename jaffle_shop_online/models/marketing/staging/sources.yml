@@ -5,11 +5,97 @@ sources:
     schema: jaffle_shop
     tables:
       - name: stg_google_ads
+        columns:
+          - name: ad_id
+            tests:
+              - not_null:
+                  config:
+                    tags:
+                      - stability
+                    severity: error
+                  meta:
+                    description: The column should not contain null values
       - name: stg_facebook_ads
+        columns:
+          - name: ad_id
+            tests:
+              - not_null:
+                  config:
+                    tags:
+                      - stability
+                    severity: error
+                  meta:
+                    description: The column should not contain null values
       - name: stg_instagram_ads
 
+        columns:
+          - name: ad_id
+            tests:
+              - not_null:
+                  config:
+                    tags:
+                      - stability
+                    severity: error
+                  meta:
+                    description: The column should not contain null values
   - name: sessions
     schema: jaffle_shop
     tables:
       - name: stg_website_sessions
+        columns:
+          - name: session_id
+            tests:
+              - not_null:
+                  config:
+                    tags:
+                      - stability
+                    severity: error
+                  meta:
+                    description: The column should not contain null values
+          - name: customer_id
+            tests:
+              - not_null:
+                  config:
+                    tags:
+                      - stability
+                    severity: error
+                  meta:
+                    description: The column should not contain null values
+          - name: ad_id
+            tests:
+              - not_null:
+                  config:
+                    tags:
+                      - stability
+                    severity: error
+                  meta:
+                    description: The column should not contain null values
       - name: stg_app_sessions
+        columns:
+          - name: session_id
+            tests:
+              - not_null:
+                  config:
+                    tags:
+                      - stability
+                    severity: error
+                  meta:
+                    description: The column should not contain null values
+          - name: customer_id
+            tests:
+              - not_null:
+                  config:
+                    tags:
+                      - stability
+                    severity: error
+                  meta:
+                    description: The column should not contain null values
+          - name: ad_id
+            tests:
+              - not_null:
+                  config:
+                    tags:
+                      - stability
+                    severity: error
+                  meta:
+                    description: The column should not contain null values

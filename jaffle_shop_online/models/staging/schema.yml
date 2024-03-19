@@ -36,8 +36,7 @@ models:
           - accepted_values:
               config:
                 severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
+              values: ["placed", "shipped", "completed", "return_pending", "returned"]
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["placed", "shipped", "completed", "return_pending", "returned"]
               quote_values: true
@@ -53,6 +52,11 @@ models:
           - unique:
               config:
                 severity: warn
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The column should contain only unique values
       - name: payment_method
         tests:
           - accepted_values:
@@ -60,6 +64,13 @@ models:
                 severity: warn
               values: ["credit_card", "coupon", "bank_transfer", "gift_card"]
 
+      - name: order_id
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The column should contain only unique values
   - name: stg_signups
     meta:
       owner: "Idan"

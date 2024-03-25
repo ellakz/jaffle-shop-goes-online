@@ -60,10 +60,24 @@ models:
     tests:
       - elementary.freshness_anomalies
       - elementary.dimension_anomalies:
-          dimensions: 
+          dimensions:
             - customer_id
           config:
             tags: ["stability"]
+      - elementary.dimension_anomalies:
+          time_bucket:
+            period: hour
+            count: 4
+          sensitivity: 3
+          days_back: 14
+          backfill_days: 2
+          timestamp_column: updated_at
+          dimensions:
+            - status
+          config:
+            severity: error
+          meta:
+            description: Checking for anomalies in the values distribution of the updated_at column by looking at a 4 hours period and comparing it to the last 14 days
     columns:
       - name: order_id
         description: This is a unique identifier for an order
@@ -87,8 +101,7 @@ models:
               config:
                 tags: ["customer_success"]
                 severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
+              values: ["placed", "shipped", "completed", "return_pending", "returned"]
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["placed", "shipped", "completed", "return_pending", "returned"]
               quote_values: true

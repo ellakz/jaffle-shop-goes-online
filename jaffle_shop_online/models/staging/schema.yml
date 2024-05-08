@@ -16,6 +16,24 @@ models:
               to: ref('stg_signups')
               field: customer_id
 
+    tests:
+      - elementary.freshness_anomalies:
+          time_bucket:
+            period: hour
+            count: 1
+          sensitivity: 3
+          days_back: 14
+          backfill_days: 2
+          timestamp_column: updated_at
+          config:
+            tags:
+              - staging
+            severity: error
+          meta:
+            owner:
+              - or+1337@elementary-data.com
+            description: Checking for freshness anomalies by looking at a 1 hours
+              period and comparing it to last 14 days
   - name: stg_orders
     meta:
       owner: "Idan"
@@ -25,6 +43,23 @@ models:
         timestamp_column: "order_date"
     tests:
       - elementary.volume_anomalies
+      - elementary.freshness_anomalies:
+          time_bucket:
+            period: hour
+            count: 1
+          sensitivity: 3
+          days_back: 14
+          backfill_days: 2
+          timestamp_column: updated_at
+          config:
+            tags:
+              - staging
+            severity: error
+          meta:
+            owner:
+              - or+1337@elementary-data.com
+            description: Checking for freshness anomalies by looking at a 1 hours
+              period and comparing it to last 14 days
     columns:
       - name: order_id
         tests:
@@ -36,8 +71,7 @@ models:
           - accepted_values:
               config:
                 severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
+              values: ["placed", "shipped", "completed", "return_pending", "returned"]
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["placed", "shipped", "completed", "return_pending", "returned"]
               quote_values: true
@@ -60,6 +94,24 @@ models:
                 severity: warn
               values: ["credit_card", "coupon", "bank_transfer", "gift_card"]
 
+    tests:
+      - elementary.freshness_anomalies:
+          time_bucket:
+            period: hour
+            count: 1
+          sensitivity: 3
+          days_back: 14
+          backfill_days: 2
+          timestamp_column: updated_at
+          config:
+            tags:
+              - staging
+            severity: error
+          meta:
+            owner:
+              - or+1337@elementary-data.com
+            description: Checking for freshness anomalies by looking at a 1 hours
+              period and comparing it to last 14 days
   - name: stg_signups
     meta:
       owner: "Idan"
@@ -82,3 +134,21 @@ models:
                 severity: warn
               column_anomalies:
                 - missing_count
+    tests:
+      - elementary.freshness_anomalies:
+          time_bucket:
+            period: hour
+            count: 1
+          sensitivity: 3
+          days_back: 14
+          backfill_days: 2
+          timestamp_column: updated_at
+          config:
+            tags:
+              - staging
+            severity: error
+          meta:
+            owner:
+              - or+1337@elementary-data.com
+            description: Checking for freshness anomalies by looking at a 1 hours
+              period and comparing it to last 14 days

@@ -2,7 +2,8 @@ version: 2
 
 models:
   - name: customers
-    description: This table has basic information about a customer, as well as some derived facts based on a customer's orders
+    description: This table has basic information about a customer, as well as some
+      derived facts based on a customer's orders
     meta:
       owner: "Maayan"
     config:
@@ -45,11 +46,23 @@ models:
               column_anomalies:
                 - missing_count
 
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: '^\S+@\S+\.\S+$'
+              is_raw: true # Optional, Indicates the regex pattern is a "raw" string and should be escaped. The default is False
+              flags: i # Optional, A string of one or more characters that are passed to the regex engine as flags (or parameters). For example, 'i' makes the regex case-insensitive.
+              config:
+                tags:
+                  - sales
+              meta:
+                owner:
+                  - or+1337@elementary-data.com
+                description: Validate that all my email columns contain valid emails
       - name: signup_date
         description: Date (UTC) of a customer's signup to the online shop.
 
   - name: orders
-    description: This table has basic information about orders, as well as some derived facts based on payments
+    description: This table has basic information about orders, as well as some derived
+      facts based on payments
     meta:
       owner: "Or"
     config:
@@ -60,7 +73,7 @@ models:
     tests:
       - elementary.freshness_anomalies
       - elementary.dimension_anomalies:
-          dimensions: 
+          dimensions:
             - customer_id
           config:
             tags: ["stability"]
@@ -87,8 +100,7 @@ models:
               config:
                 tags: ["customer_success"]
                 severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
+              values: ["placed", "shipped", "completed", "return_pending", "returned"]
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["placed", "shipped", "completed", "return_pending", "returned"]
               quote_values: true

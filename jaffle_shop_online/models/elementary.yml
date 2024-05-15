@@ -1,0 +1,28 @@
+version: 2
+models:
+  - name: order_items
+    columns:
+      - name: customer_id
+        tests:
+          - unique:
+              config:
+                tags:
+                  - stability
+                  - staging
+                severity: error
+              meta:
+                owner:
+                  - Maayan
+                description: The column should contain only unique values
+      - name: order_id
+        tests:
+          - unique:
+              config:
+                tags:
+                  - stability
+                  - staging
+                severity: error
+              meta:
+                owner:
+                  - Maayan
+                description: The column should contain only unique values

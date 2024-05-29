@@ -1,0 +1,28 @@
+version: 2
+models:
+  - name: order_items
+    columns:
+      - name: order_id
+        tests:
+          - dbt_utils.sequential_values:
+              interval: 1 # The gap between two sequential values
+              group_by_columns: # Optional, Columns to group by before executing the test
+                - group_id
+              config:
+                tags:
+                  - Finance
+              meta:
+                owner:
+                  - daniel+999@elementary-data.com
+      - name: customer_id
+        tests:
+          - dbt_utils.sequential_values:
+              interval: 1 # The gap between two sequential values
+              group_by_columns: # Optional, Columns to group by before executing the test
+                - group_id
+              config:
+                tags:
+                  - Finance
+              meta:
+                owner:
+                  - daniel+999@elementary-data.com

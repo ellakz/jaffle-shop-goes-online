@@ -1,0 +1,22 @@
+version: 2
+models:
+  - name: order_items
+    columns:
+      - name: customer_id
+        tests:
+          - not_null:
+              config:
+                severity: error
+              meta:
+                owner:
+                  - or+1337@elementary-data.com
+                description: The column should not contain null values
+      - name: order_id
+        tests:
+          - not_null:
+              config:
+                severity: error
+              meta:
+                owner:
+                  - or+1337@elementary-data.com
+                description: The column should not contain null values

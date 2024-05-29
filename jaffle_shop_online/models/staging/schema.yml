@@ -16,6 +16,13 @@ models:
               to: ref('stg_signups')
               field: customer_id
 
+          - not_null:
+              config:
+                severity: error
+              meta:
+                owner:
+                  - or+1337@elementary-data.com
+                description: The column should not contain null values
   - name: stg_orders
     meta:
       owner: "Idan"
@@ -31,17 +38,32 @@ models:
           - unique:
               config:
                 severity: warn
+          - not_null:
+              config:
+                severity: error
+              meta:
+                owner:
+                  - or+1337@elementary-data.com
+                description: The column should not contain null values
       - name: status
         tests:
           - accepted_values:
               config:
                 severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
+              values: ["placed", "shipped", "completed", "return_pending", "returned"]
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["placed", "shipped", "completed", "return_pending", "returned"]
               quote_values: true
 
+      - name: customer_id
+        tests:
+          - not_null:
+              config:
+                severity: error
+              meta:
+                owner:
+                  - or+1337@elementary-data.com
+                description: The column should not contain null values
   - name: stg_payments
     meta:
       owner: "Idan"
@@ -53,6 +75,13 @@ models:
           - unique:
               config:
                 severity: warn
+          - not_null:
+              config:
+                severity: error
+              meta:
+                owner:
+                  - or+1337@elementary-data.com
+                description: The column should not contain null values
       - name: payment_method
         tests:
           - accepted_values:
@@ -60,6 +89,15 @@ models:
                 severity: warn
               values: ["credit_card", "coupon", "bank_transfer", "gift_card"]
 
+      - name: order_id
+        tests:
+          - not_null:
+              config:
+                severity: error
+              meta:
+                owner:
+                  - or+1337@elementary-data.com
+                description: The column should not contain null values
   - name: stg_signups
     meta:
       owner: "Idan"
@@ -73,6 +111,13 @@ models:
           - unique:
               config:
                 severity: warn
+          - not_null:
+              config:
+                severity: error
+              meta:
+                owner:
+                  - or+1337@elementary-data.com
+                description: The column should not contain null values
       - name: customer_email
         tests:
           - unique
@@ -82,3 +127,12 @@ models:
                 severity: warn
               column_anomalies:
                 - missing_count
+      - name: customer_id
+        tests:
+          - not_null:
+              config:
+                severity: error
+              meta:
+                owner:
+                  - or+1337@elementary-data.com
+                description: The column should not contain null values

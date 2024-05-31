@@ -1,0 +1,30 @@
+version: 2
+models:
+  - name: order_items
+    columns:
+      - name: order_id
+        tests:
+          - dbt_utils.sequential_values:
+              interval: 2 # The gap between two sequential values
+              group_by_columns: # Optional, Columns to group by before executing the test
+                - group_id
+              config:
+                tags:
+                  - stability
+              meta:
+                owner:
+                  - or+1337@elementary-data.com
+                description: Validate primary keys are sequential
+      - name: customer_id
+        tests:
+          - dbt_utils.sequential_values:
+              interval: 2 # The gap between two sequential values
+              group_by_columns: # Optional, Columns to group by before executing the test
+                - group_id
+              config:
+                tags:
+                  - stability
+              meta:
+                owner:
+                  - or+1337@elementary-data.com
+                description: Validate primary keys are sequential

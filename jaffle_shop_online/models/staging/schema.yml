@@ -36,8 +36,7 @@ models:
           - accepted_values:
               config:
                 severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
+              values: ["placed", "shipped", "completed", "return_pending", "returned"]
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["placed", "shipped", "completed", "return_pending", "returned"]
               quote_values: true
@@ -60,6 +59,11 @@ models:
                 severity: warn
               values: ["credit_card", "coupon", "bank_transfer", "gift_card"]
 
+    tests:
+      - dbt_expectations.expect_table_row_count_to_be_between:
+          min_value: 1 # Optional
+          max_value: 4 # Optional
+          row_condition: id is not null # Optional
   - name: stg_signups
     meta:
       owner: "Idan"

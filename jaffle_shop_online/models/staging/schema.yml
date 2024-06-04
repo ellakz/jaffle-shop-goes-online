@@ -36,8 +36,7 @@ models:
           - accepted_values:
               config:
                 severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
+              values: ["placed", "shipped", "completed", "return_pending", "returned"]
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["placed", "shipped", "completed", "return_pending", "returned"]
               quote_values: true
@@ -53,6 +52,30 @@ models:
           - unique:
               config:
                 severity: warn
+          - elementary.column_anomalies:
+              column_anomalies: # Optional, A list of column monitors for anomaly detection. by default all monitors except for `sum` are executed.
+                - sum
+              timestamp_column: created_at # Optional, The timestamp column to use in order to split the data into time buckets.
+              where_expression: id is not null # Optional, SQL expression to filter the data.
+              anomaly_sensitivity: 3 # Optional, The sensitivity level for anomaly detection.
+              anomaly_direction: both # Optional, The direction of anomalies to detect.
+              detection_period: # Optional, The period for anomaly detection.
+                period: day
+                count: 2
+              training_period: # Optional, The period for model training.
+                period: day
+                count: 14
+              time_bucket: # Optional, The period for time bucketing.
+                period: day
+                count: 1
+              seasonality: day_of_week # Optional, The seasonality of the data (omit for no seasonality).
+              detection_delay: # Optional, The period for detection delay.
+                period: day
+                count: 0
+              ignore_small_changes: # Optional
+                spike_failure_percent_threshold: 0 # Optional, Threshold for spike anomaly failure.
+                drop_failure_percent_threshold: 0 # Optional, Threshold for drop anomaly failure.
+              anomaly_exclude_metrics: metric_date != '2021-01-01' # Optional, SQL where expression on fields metric_date / metric_time_bucket / metric_value
       - name: payment_method
         tests:
           - accepted_values:
@@ -60,6 +83,32 @@ models:
                 severity: warn
               values: ["credit_card", "coupon", "bank_transfer", "gift_card"]
 
+      - name: order_id
+        tests:
+          - elementary.column_anomalies:
+              column_anomalies: # Optional, A list of column monitors for anomaly detection. by default all monitors except for `sum` are executed.
+                - sum
+              timestamp_column: created_at # Optional, The timestamp column to use in order to split the data into time buckets.
+              where_expression: id is not null # Optional, SQL expression to filter the data.
+              anomaly_sensitivity: 3 # Optional, The sensitivity level for anomaly detection.
+              anomaly_direction: both # Optional, The direction of anomalies to detect.
+              detection_period: # Optional, The period for anomaly detection.
+                period: day
+                count: 2
+              training_period: # Optional, The period for model training.
+                period: day
+                count: 14
+              time_bucket: # Optional, The period for time bucketing.
+                period: day
+                count: 1
+              seasonality: day_of_week # Optional, The seasonality of the data (omit for no seasonality).
+              detection_delay: # Optional, The period for detection delay.
+                period: day
+                count: 0
+              ignore_small_changes: # Optional
+                spike_failure_percent_threshold: 0 # Optional, Threshold for spike anomaly failure.
+                drop_failure_percent_threshold: 0 # Optional, Threshold for drop anomaly failure.
+              anomaly_exclude_metrics: metric_date != '2021-01-01' # Optional, SQL where expression on fields metric_date / metric_time_bucket / metric_value
   - name: stg_signups
     meta:
       owner: "Idan"

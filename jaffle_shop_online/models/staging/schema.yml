@@ -25,6 +25,17 @@ models:
         timestamp_column: "order_date"
     tests:
       - elementary.volume_anomalies
+      - dbt_utils.recency:
+          datepart: day
+          field: created_at
+          interval: 1
+          config:
+            tags:
+              - Marketing
+          meta:
+            owner:
+              - or+1337@elementary-data.com
+            description: My data is up to date
     columns:
       - name: order_id
         tests:
@@ -36,8 +47,7 @@ models:
           - accepted_values:
               config:
                 severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
+              values: ["placed", "shipped", "completed", "return_pending", "returned"]
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["placed", "shipped", "completed", "return_pending", "returned"]
               quote_values: true
@@ -60,6 +70,18 @@ models:
                 severity: warn
               values: ["credit_card", "coupon", "bank_transfer", "gift_card"]
 
+    tests:
+      - dbt_utils.recency:
+          datepart: day
+          field: created_at
+          interval: 1
+          config:
+            tags:
+              - Marketing
+          meta:
+            owner:
+              - or+1337@elementary-data.com
+            description: My data is up to date
   - name: stg_signups
     meta:
       owner: "Idan"

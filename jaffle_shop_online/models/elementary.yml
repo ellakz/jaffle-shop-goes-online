@@ -1,0 +1,12 @@
+version: 2
+models:
+  - name: order_items
+    columns:
+      - name: customer_id
+        tests:
+          - dbt_utils.sequential_values:
+              interval: 1 # The gap between two sequential values
+      - name: order_id
+        tests:
+          - dbt_utils.sequential_values:
+              interval: 1 # The gap between two sequential values

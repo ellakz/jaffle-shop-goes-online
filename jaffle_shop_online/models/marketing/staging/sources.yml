@@ -5,11 +5,79 @@ sources:
     schema: jaffle_shop
     tables:
       - name: stg_google_ads
+        columns:
+          - name: ad_id
+            tests:
+              - unique:
+                  config:
+                    severity: error
+                  meta:
+                    description: The column should contain only unique values
       - name: stg_facebook_ads
+        columns:
+          - name: ad_id
+            tests:
+              - unique:
+                  config:
+                    severity: error
+                  meta:
+                    description: The column should contain only unique values
       - name: stg_instagram_ads
 
+        columns:
+          - name: ad_id
+            tests:
+              - unique:
+                  config:
+                    severity: error
+                  meta:
+                    description: The column should contain only unique values
   - name: sessions
     schema: jaffle_shop
     tables:
       - name: stg_website_sessions
+        columns:
+          - name: session_id
+            tests:
+              - unique:
+                  config:
+                    severity: error
+                  meta:
+                    description: The column should contain only unique values
+          - name: ad_id
+            tests:
+              - unique:
+                  config:
+                    severity: error
+                  meta:
+                    description: The column should contain only unique values
+          - name: customer_id
+            tests:
+              - unique:
+                  config:
+                    severity: error
+                  meta:
+                    description: The column should contain only unique values
       - name: stg_app_sessions
+        columns:
+          - name: customer_id
+            tests:
+              - unique:
+                  config:
+                    severity: error
+                  meta:
+                    description: The column should contain only unique values
+          - name: ad_id
+            tests:
+              - unique:
+                  config:
+                    severity: error
+                  meta:
+                    description: The column should contain only unique values
+          - name: session_id
+            tests:
+              - unique:
+                  config:
+                    severity: error
+                  meta:
+                    description: The column should contain only unique values

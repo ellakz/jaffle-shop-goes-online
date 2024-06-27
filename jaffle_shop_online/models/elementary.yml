@@ -1,0 +1,14 @@
+version: 2
+models:
+  - name: order_items
+    columns:
+      - name: order_id
+        tests:
+          - dbt_utils.accepted_range:
+              max_value: 10 # Optional
+              inclusive: true # Optional
+      - name: customer_id
+        tests:
+          - dbt_utils.accepted_range:
+              max_value: 10 # Optional
+              inclusive: true # Optional

@@ -5,11 +5,61 @@ sources:
     schema: jaffle_shop
     tables:
       - name: stg_google_ads
+        columns:
+          - name: ad_id
+            tests:
+              - dbt_utils.accepted_range:
+                  max_value: 10 # Optional
+                  inclusive: true # Optional
       - name: stg_facebook_ads
+        columns:
+          - name: ad_id
+            tests:
+              - dbt_utils.accepted_range:
+                  max_value: 10 # Optional
+                  inclusive: true # Optional
       - name: stg_instagram_ads
 
+        columns:
+          - name: ad_id
+            tests:
+              - dbt_utils.accepted_range:
+                  max_value: 10 # Optional
+                  inclusive: true # Optional
   - name: sessions
     schema: jaffle_shop
     tables:
       - name: stg_website_sessions
+        columns:
+          - name: session_id
+            tests:
+              - dbt_utils.accepted_range:
+                  max_value: 10 # Optional
+                  inclusive: true # Optional
+          - name: ad_id
+            tests:
+              - dbt_utils.accepted_range:
+                  max_value: 10 # Optional
+                  inclusive: true # Optional
+          - name: customer_id
+            tests:
+              - dbt_utils.accepted_range:
+                  max_value: 10 # Optional
+                  inclusive: true # Optional
       - name: stg_app_sessions
+        columns:
+          - name: customer_id
+            tests:
+              - dbt_utils.accepted_range:
+                  max_value: 10 # Optional
+                  inclusive: true # Optional
+          - name: ad_id
+            tests:
+              - dbt_utils.accepted_range:
+                  max_value: 10 # Optional
+                  inclusive: true # Optional
+          - name: session_id
+            tests:
+              - dbt_utils.accepted_range:
+                  max_value: 10 # Optional
+                  inclusive: true # Optional

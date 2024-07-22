@@ -1,0 +1,26 @@
+version: 2
+models:
+  - name: order_items
+    columns:
+      - name: order_id
+        tests:
+          - dbt_utils.sequential_values:
+              interval: 2 # The gap between two sequential values
+              config:
+                tags:
+                  - stability
+              meta:
+                owner:
+                  - or+1337@elementary-data.com
+                description: Primary keys are sequential
+      - name: customer_id
+        tests:
+          - dbt_utils.sequential_values:
+              interval: 2 # The gap between two sequential values
+              config:
+                tags:
+                  - stability
+              meta:
+                owner:
+                  - or+1337@elementary-data.com
+                description: Primary keys are sequential

@@ -5,11 +5,115 @@ sources:
     schema: jaffle_shop
     tables:
       - name: stg_google_ads
+        columns:
+          - name: ad_id
+            tests:
+              - dbt_utils.sequential_values:
+                  interval: 2 # The gap between two sequential values
+                  config:
+                    tags:
+                      - stability
+                  meta:
+                    owner:
+                      - or+1337@elementary-data.com
+                    description: Primary keys are sequential
       - name: stg_facebook_ads
+        columns:
+          - name: ad_id
+            tests:
+              - dbt_utils.sequential_values:
+                  interval: 2 # The gap between two sequential values
+                  config:
+                    tags:
+                      - stability
+                  meta:
+                    owner:
+                      - or+1337@elementary-data.com
+                    description: Primary keys are sequential
       - name: stg_instagram_ads
 
+        columns:
+          - name: ad_id
+            tests:
+              - dbt_utils.sequential_values:
+                  interval: 2 # The gap between two sequential values
+                  config:
+                    tags:
+                      - stability
+                  meta:
+                    owner:
+                      - or+1337@elementary-data.com
+                    description: Primary keys are sequential
   - name: sessions
     schema: jaffle_shop
     tables:
       - name: stg_website_sessions
+        columns:
+          - name: session_id
+            tests:
+              - dbt_utils.sequential_values:
+                  interval: 2 # The gap between two sequential values
+                  config:
+                    tags:
+                      - stability
+                  meta:
+                    owner:
+                      - or+1337@elementary-data.com
+                    description: Primary keys are sequential
+          - name: ad_id
+            tests:
+              - dbt_utils.sequential_values:
+                  interval: 2 # The gap between two sequential values
+                  config:
+                    tags:
+                      - stability
+                  meta:
+                    owner:
+                      - or+1337@elementary-data.com
+                    description: Primary keys are sequential
+          - name: customer_id
+            tests:
+              - dbt_utils.sequential_values:
+                  interval: 2 # The gap between two sequential values
+                  config:
+                    tags:
+                      - stability
+                  meta:
+                    owner:
+                      - or+1337@elementary-data.com
+                    description: Primary keys are sequential
       - name: stg_app_sessions
+        columns:
+          - name: ad_id
+            tests:
+              - dbt_utils.sequential_values:
+                  interval: 2 # The gap between two sequential values
+                  config:
+                    tags:
+                      - stability
+                  meta:
+                    owner:
+                      - or+1337@elementary-data.com
+                    description: Primary keys are sequential
+          - name: session_id
+            tests:
+              - dbt_utils.sequential_values:
+                  interval: 2 # The gap between two sequential values
+                  config:
+                    tags:
+                      - stability
+                  meta:
+                    owner:
+                      - or+1337@elementary-data.com
+                    description: Primary keys are sequential
+          - name: customer_id
+            tests:
+              - dbt_utils.sequential_values:
+                  interval: 2 # The gap between two sequential values
+                  config:
+                    tags:
+                      - stability
+                  meta:
+                    owner:
+                      - or+1337@elementary-data.com
+                    description: Primary keys are sequential

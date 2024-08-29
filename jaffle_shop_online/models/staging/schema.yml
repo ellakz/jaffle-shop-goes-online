@@ -16,6 +16,15 @@ models:
               to: ref('stg_signups')
               field: customer_id
 
+          - unique:
+              config:
+                tags:
+                  - stability
+                severity: error
+              meta:
+                owner:
+                  - Maayan
+                description: The column should contain only unique values
   - name: stg_orders
     meta:
       owner: "Idan"
@@ -36,8 +45,7 @@ models:
           - accepted_values:
               config:
                 severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
+              values: ["placed", "shipped", "completed", "return_pending", "returned"]
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["placed", "shipped", "completed", "return_pending", "returned"]
               quote_values: true

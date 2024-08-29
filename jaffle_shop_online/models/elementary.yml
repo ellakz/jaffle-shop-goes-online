@@ -1,0 +1,22 @@
+version: 2
+models:
+  - name: order_items
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique:
+              config:
+                error_if: '>5'
+              meta:
+                owner:
+                  - Maayan
+                description: The column should contain only unique values
+      - name: order_id
+        data_tests:
+          - unique:
+              config:
+                error_if: '>5'
+              meta:
+                owner:
+                  - Maayan
+                description: The column should contain only unique values

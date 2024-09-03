@@ -2,7 +2,8 @@ version: 2
 
 models:
   - name: customers
-    description: This table has basic information about a customer, as well as some derived facts based on a customer's orders
+    description: This table has basic information about a customer, as well as some
+      derived facts based on a customer's orders
     meta:
       owner: "Maayan"
     config:
@@ -19,6 +20,15 @@ models:
               to: ref('stg_signups')
               field: customer_id
 
+          - unique:
+              config:
+                tags:
+                  - stability
+                error_if: '>3'
+              meta:
+                owner:
+                  - Maayan
+                description: The column should contain only unique values
       - name: first_name
         description: Customer's first name. PII.
 
@@ -49,7 +59,8 @@ models:
         description: Date (UTC) of a customer's signup to the online shop.
 
   - name: orders
-    description: This table has basic information about orders, as well as some derived facts based on payments
+    description: This table has basic information about orders, as well as some derived
+      facts based on payments
     meta:
       owner: "Or"
     config:
@@ -60,7 +71,7 @@ models:
     tests:
       - elementary.freshness_anomalies
       - elementary.dimension_anomalies:
-          dimensions: 
+          dimensions:
             - customer_id
           config:
             tags: ["stability"]
@@ -87,8 +98,7 @@ models:
               config:
                 tags: ["customer_success"]
                 severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
+              values: ["placed", "shipped", "completed", "return_pending", "returned"]
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["placed", "shipped", "completed", "return_pending", "returned"]
               quote_values: true

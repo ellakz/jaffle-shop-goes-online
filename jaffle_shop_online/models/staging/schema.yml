@@ -16,6 +16,18 @@ models:
               to: ref('stg_signups')
               field: customer_id
 
+    data_tests:
+      - dbt_utils.recency:
+          datepart: day
+          field: created_at
+          interval: 1
+          config:
+            tags:
+              - stability
+          meta:
+            owner:
+              - or+1337@elementary-data.com
+            description: Validates the data is updated until yesterday
   - name: stg_orders
     meta:
       owner: "Idan"
@@ -36,8 +48,7 @@ models:
           - accepted_values:
               config:
                 severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
+              values: ["placed", "shipped", "completed", "return_pending", "returned"]
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["placed", "shipped", "completed", "return_pending", "returned"]
               quote_values: true

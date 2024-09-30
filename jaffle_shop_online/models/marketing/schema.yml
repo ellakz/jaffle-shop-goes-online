@@ -16,11 +16,13 @@ models:
 
       - name: utm_source
         data_type: varchar
-        description: "Source where the ad was displayed. For example, Google, Facebook, Twitter, Newsletter, etc."
+        description: "Source where the ad was displayed. For example, Google, Facebook,
+          Twitter, Newsletter, etc."
 
       - name: utm_medium
         data_type: varchar
-        description: "The advertising or marketing medium. The medium can be social media, banners, CPC, third-party blogs, etc."
+        description: "The advertising or marketing medium. The medium can be social
+          media, banners, CPC, third-party blogs, etc."
 
       - name: utm_campain
         data_type: varchar
@@ -31,7 +33,8 @@ models:
         description: "The USD amount of money spent"
 
   - name: attribution_touches
-    description: "This is a table that contains all the touch points, by session, with the utm_source, utm_medium and utm_campaign"
+    description: "This is a table that contains all the touch points, by session,
+      with the utm_source, utm_medium and utm_campaign"
     meta:
       owner: "Ella"
     config:
@@ -57,11 +60,13 @@ models:
 
       - name: utm_source
         data_type: varchar
-        description: "Source where the ad was displayed. For example, Google, Facebook, Twitter, Newsletter, etc."
+        description: "Source where the ad was displayed. For example, Google, Facebook,
+          Twitter, Newsletter, etc."
 
       - name: utm_medium
         data_type: varchar
-        description: "The advertising or marketing medium. The medium can be social media, banners, CPC, third-party blogs, etc."
+        description: "The advertising or marketing medium. The medium can be social
+          media, banners, CPC, third-party blogs, etc."
 
       - name: utm_campain
         data_type: varchar
@@ -115,8 +120,21 @@ models:
         data_type: number
         description: ""
 
+    data_tests:
+      - dbt_utils.recency:
+          datepart: day
+          field: created_at
+          interval: 1
+          config:
+            tags:
+              - stability
+          meta:
+            owner:
+              - or+1337@elementary-data.com
+            description: Data is updated up to yesterday
   - name: cpa_and_roas
-    description: "This table contains the cost per acquisition and return on ad spend, by source, and per month"
+    description: "This table contains the cost per acquisition and return on ad spend,
+      by source, and per month"
     meta:
       owner: "Ella"
     config:
@@ -130,7 +148,8 @@ models:
 
       - name: utm_source
         data_type: varchar
-        description: "Source where the ad was displayed. For example, Google, Facebook, Twitter, Newsletter, etc."
+        description: "Source where the ad was displayed. For example, Google, Facebook,
+          Twitter, Newsletter, etc."
 
       - name: attribution_points
         data_type: number
@@ -150,10 +169,12 @@ models:
 
       - name: return_on_advertising_spend
         data_type: number
-        description: "The ROI of the ad spend, calculated as attribution_revenue / total_spend"
+        description: "The ROI of the ad spend, calculated as attribution_revenue /
+          total_spend"
 
   - name: marketing_ads
-    description: "This table contains information on the ad spend, by source, medium and campaign"
+    description: "This table contains information on the ad spend, by source, medium
+      and campaign"
     meta:
       owner: "Ella"
     config:
@@ -171,7 +192,8 @@ models:
 
       - name: utm_medium
         data_type: varchar
-        description: "The advertising or marketing medium. The medium can be social media, banners, CPC, third-party blogs, etc."
+        description: "The advertising or marketing medium. The medium can be social
+          media, banners, CPC, third-party blogs, etc."
 
       - name: utm_campain
         data_type: varchar
@@ -183,16 +205,17 @@ models:
 
       - name: utm_source
         data_type: varchar
-        description: "Source where the ad was displayed. For example, Google, Facebook, Twitter, Newsletter, etc."
+        description: "Source where the ad was displayed. For example, Google, Facebook,
+          Twitter, Newsletter, etc."
 
   - name: agg_sessions
     description: "This table contains aggregated information on the sessions"
     meta:
       owner: "Ella"
     config:
-        tags: ["Marketing"]
-        elementary:
-            timestamp_column: "started_at"
+      tags: ["Marketing"]
+      elementary:
+        timestamp_column: "started_at"
     columns:
       - name: session_id
         data_type: varchar
@@ -212,7 +235,8 @@ models:
 
       - name: utm_source
         data_type: varchar
-        description: "Source where the ad was displayed. For example, Google, Facebook, Twitter, Newsletter, etc."
+        description: "Source where the ad was displayed. For example, Google, Facebook,
+          Twitter, Newsletter, etc."
 
       - name: ad_id
         data_type: varchar
@@ -220,16 +244,17 @@ models:
 
       - name: platform
         data_type: varchar
-        description: "Platform where the session was made. For example, website, iOS app, Android app, etc."
+        description: "Platform where the session was made. For example, website, iOS
+          app, Android app, etc."
 
   - name: customer_conversions
     description: "This table contains information on the conversions of all the customers"
     meta:
       owner: "Ella"
     config:
-        tags: ["Marketing", "Finance", "PII"]
-        elementary:
-            timestamp_column: "converted_at"
+      tags: ["Marketing", "Finance", "PII"]
+      elementary:
+        timestamp_column: "converted_at"
     columns:
       - name: customer_id
         data_type: number
@@ -244,13 +269,14 @@ models:
         description: "Total revenue amount (USD) of the conversion"
 
   - name: sessions
-    description: "This table contains information on the sessions of all the customers and the utm_source, utm_medium and utm_campaign of the session"
+    description: "This table contains information on the sessions of all the customers
+      and the utm_source, utm_medium and utm_campaign of the session"
     meta:
       owner: "Ella"
     config:
-        tags: ["Marketing", "PII"]
-        elementary:
-            timestamp_column: "started_at"
+      tags: ["Marketing", "PII"]
+      elementary:
+        timestamp_column: "started_at"
     columns:
       - name: session_id
         data_type: varchar
@@ -270,11 +296,13 @@ models:
 
       - name: utm_source
         data_type: varchar
-        description: "Source where the ad was displayed. For example, Google, Facebook, Twitter, Newsletter, etc."
+        description: "Source where the ad was displayed. For example, Google, Facebook,
+          Twitter, Newsletter, etc."
 
       - name: utm_medium
         data_type: varchar
-        description: "The advertising or marketing medium. The medium can be social media, banners, CPC, third-party blogs, etc."
+        description: "The advertising or marketing medium. The medium can be social
+          media, banners, CPC, third-party blogs, etc."
 
       - name: utm_campain
         data_type: varchar
